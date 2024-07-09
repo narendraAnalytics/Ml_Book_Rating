@@ -33,28 +33,37 @@ The objective of this project is to predict the average rating of a book based o
 ## Project Folder Structure
 The project is organized into the following directories and files:
 ```
-book-rating-prediction/
-├── data/
-│   ├── raw/
-│   │   └── books.csv
-│   ├── processed/
-│   │   └── df_cleaned_with_interaction.csv
-├── notebooks/
-│   ├── data_cleaning.ipynb
-│   ├── feature_engineering.ipynb
-│   ├── eda.ipynb
-│   ├── model_building.ipynb
-│   ├── model_evaluation.ipynb
-├── src/
-│   ├── data_cleaning.py
-│   ├── feature_engineering.py
-│   ├── eda.py
-│   ├── model_building.py
-│   ├── model_evaluation.py
-├── app/
-│   ├── streamlit_app.py
-├── README.md
-├── requirements.txt
+book_rating_system/
+    ├── config/
+    ├── dashboard/
+    │   ├── data/
+    │   │   └── df_filtered_model.csv
+    │   ├── models/
+    │   │   └── random_forest_model.pkl
+    │   ├── app.py
+    │   └── requirements.txt
+    ├── data/
+    │   ├── processed/
+    │   └── raw/
+    │       ├── df.csv
+    │       ├── df_cleaned.csv
+    │       ├── df_cleaned_with_interaction.csv
+    │       └── df_cleaned_with_model.csv
+    ├── models/
+    │   └── random_forest_model.pkl
+    ├── notebooks/
+    │   ├── Data_Cleaning_Book.ipynb
+    │   └── Exploratory_Data_Analysis_(EDA).ipynb
+    ├── reports/
+    │   └── figures/
+    ├── src/
+    │   ├── data/
+    │   └── models/
+    │   └── visualization/
+    ├── .gitignore
+    ├── README.md
+    └── requirements.txt
+
 ```
 
 ## Getting Started
