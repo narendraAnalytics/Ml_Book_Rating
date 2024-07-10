@@ -64,3 +64,5 @@ features = np.array([authors_encoded, publisher_encoded, page_count, ratings_cou
 # Predict and display the result
 prediction = best_rf_model.predict(features)
 st.write(f'Predicted Average Rating: {prediction[0]:.2f}')
+
+
