@@ -1,5 +1,5 @@
 
-![Project Image](path/to/image.png)
+![Project Image](dashboard/images/library_image.webp)
 
 # Book Rating Prediction Project
 

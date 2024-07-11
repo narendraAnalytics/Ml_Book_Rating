@@ -7,27 +7,36 @@ from sklearn.metrics import mean_absolute_error, r2_score
 
 
 # Define paths
-data_path = os.path.join(os.path.dirname(__file__), '../../data/raw/df_cleaned_with_model.csv')
+cleaned_data_path = os.path.join(os.path.dirname(__file__), '../../data/raw/df_cleaned_with_model.csv')
+original_data_path = os.path.join(os.path.dirname(__file__), '../../data/raw/df.csv')
 model_path = os.path.join(os.path.dirname(__file__), '../../models/best_rf_model.pkl')
 features_path = os.path.join(os.path.dirname(__file__), '../../models/feature_names.pkl')
 unique_values_path = os.path.join(os.path.dirname(__file__), '../../models/unique_values.pkl')
 max_values_path = os.path.join(os.path.dirname(__file__), '../../models/max_values.pkl')
 
-# Load the dataset
-df = pd.read_csv(data_path)
+# Load the datasets
+df_cleaned = pd.read_csv(cleaned_data_path)
+df_original = pd.read_csv(original_data_path)
 
-# Save unique values for authors, publisher, and categories
+# Merge the datasets to include the title column
+df = df_cleaned.merge(df_original[['title']], left_index=True, right_index=True)
+
+# Save unique values for title, authors, publisher, and categories
 unique_values = {
+    'title': df['title'].unique().tolist(),
     'authors': df['authors'].unique().tolist(),
     'publisher': df['publisher'].unique().tolist(),
     'categories': df['categories'].unique().tolist()
 }
+
+
 with open(unique_values_path, 'wb') as file:
     pickle.dump(unique_values, file)
 
-# Determine and save maximum values for page_count and book_age
+# Determine and save maximum values for page_count, ratings_count, and book_age
 max_values = {
     'page_count': df['page_count'].max(),
+    'ratings_count': df['ratings_count'].max(),
     'book_age': df['book_age'].max()
 }
 
@@ -35,7 +44,7 @@ with open(max_values_path, 'wb') as file:
     pickle.dump(max_values, file)   
 
 # One-hot encode categorical variables
-df_encoded = pd.get_dummies(df, columns=['authors', 'publisher', 'categories', 'language'])
+df_encoded = pd.get_dummies(df.drop(columns=['title']), columns=['authors', 'publisher', 'categories', 'language'])
 
 # Separate features and target variable
 X = df_encoded.drop(columns=['average_rating', 'description'])
