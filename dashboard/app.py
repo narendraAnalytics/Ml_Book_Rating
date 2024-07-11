@@ -43,7 +43,7 @@ categories = st.selectbox("Categories", unique_values['categories'])
 description = st.text_area("Description (not used in prediction)")
 
 page_count = st.slider("Page Count", min_value=1, max_value=max_page_count, value=1)
-ratings_count = st.slider("Ratings Count", min_value=1, max_value=max_ratings_count, value=1)
+#ratings_count = st.slider("Ratings Count", min_value=1, max_value=max_ratings_count, value=1)
 book_age = st.slider("Book Age", min_value=0, max_value=max_book_age, value=0)
 
 if st.button("Predict"):
@@ -55,7 +55,7 @@ if st.button("Predict"):
         'categories': [categories],
         'description': [description],
         'page_count': [page_count],
-        'ratings_count': [ratings_count],
+        #'ratings_count': [ratings_count],
         'book_age': [book_age]
     })
 
