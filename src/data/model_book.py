@@ -11,6 +11,7 @@ data_path = os.path.join(os.path.dirname(__file__), '../../data/raw/df_cleaned_w
 model_path = os.path.join(os.path.dirname(__file__), '../../models/best_rf_model.pkl')
 features_path = os.path.join(os.path.dirname(__file__), '../../models/feature_names.pkl')
 unique_values_path = os.path.join(os.path.dirname(__file__), '../../models/unique_values.pkl')
+max_values_path = os.path.join(os.path.dirname(__file__), '../../models/max_values.pkl')
 
 # Load the dataset
 df = pd.read_csv(data_path)
@@ -23,6 +24,15 @@ unique_values = {
 }
 with open(unique_values_path, 'wb') as file:
     pickle.dump(unique_values, file)
+
+# Determine and save maximum values for page_count and book_age
+max_values = {
+    'page_count': df['page_count'].max(),
+    'book_age': df['book_age'].max()
+}
+
+with open(max_values_path, 'wb') as file:
+    pickle.dump(max_values, file)   
 
 # One-hot encode categorical variables
 df_encoded = pd.get_dummies(df, columns=['authors', 'publisher', 'categories', 'language'])
