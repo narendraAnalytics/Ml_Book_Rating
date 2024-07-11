@@ -64,6 +64,45 @@ book_rating_system/
     ├── README.md
     └── requirements.txt
 
+
+```
+```
+config/
+dashboard/
+    app.py
+    requirements.txt
+    data/
+        df.csv
+        df_cleaned_with_model.csv
+    images/
+        library_image.webp
+    models/
+        best_rf_model.pkl
+        feature_names.pkl
+        max_values.pkl
+        unique_values.pkl
+data/
+    processed/
+    raw/
+        df.csv
+        df_cleaned_with_interaction.csv
+        df_cleaned_with_model.csv
+models/
+    best_rf_model.pkl
+    feature_names.pkl
+    max_values.pkl
+    unique_values.pkl
+notebooks/
+    Data_Cleaning_Book.ipynb
+    Exploratory_Data_Analysis_(EDA).ipynb
+reports/
+    figures/
+src/
+    requirements.txt
+    data/
+        model_book.py
+    models/
+    visualization/
 ```
 
 ## Getting Started
